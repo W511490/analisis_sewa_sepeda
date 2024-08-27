@@ -61,7 +61,7 @@ def create_bike_2011(data):
     bike_2011_df['mnth'] = bike_2011_df['mnth'].dt.strftime('%B')
     return bike_2011_df
 
-bike_data = pd.read_csv('bike.csv')
+bike_data = pd.read_csv('../dashboard/bike.csv')
 
 byseason_data = create_byseason(bike_data)
 byholiday_data = create_byholiday(bike_data)
