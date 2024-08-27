@@ -3,6 +3,8 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import streamlit as st
 from babel.numbers import format_currency
+import os
+
 sns.set(style='dark')
 
 def create_byseason(data):
@@ -61,7 +63,13 @@ def create_bike_2011(data):
     bike_2011_df['mnth'] = bike_2011_df['mnth'].dt.strftime('%B')
     return bike_2011_df
 
-bike_data = pd.read_csv('../dashboard/bike.csv')
+# bike_data = pd.read_csv('../dashboard/bike.csv')
+
+script_dir = os.path.dirname(os.path.realpath(__file__))
+
+data_file_path = os.path.join(script_dir, '../dashboard/bike.csv')
+
+bike_data = pd.read_csv(data_file_path, encoding='latin1')
 
 byseason_data = create_byseason(bike_data)
 byholiday_data = create_byholiday(bike_data)
